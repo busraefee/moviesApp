@@ -1,7 +1,5 @@
 package com.ideateknoloji.task
 
-import java.io.Serializable
-
 data class Filmler(
     var rank: Int,
     var title: String,

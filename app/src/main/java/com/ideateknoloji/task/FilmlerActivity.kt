@@ -24,23 +24,11 @@ class FilmlerActivity : AppCompatActivity() {
         setContentView(R.layout.activity_filmler)
 
         // val film_id = intent.getSerializableExtra("filmId") as Filmler
-
         toolbarFilmler.title = "Filmler"
         setSupportActionBar(toolbarFilmler)
 
         filmlerRv.setHasFixedSize(true)
         filmlerRv.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-
-/*
-        val f1 = Filmler(1, "Deneme", 2008, "test", "de")
-        val f2 = Filmler(1, "Deneme22", 2028, "test", "de")
-        val f3 = Filmler(1, "Deneme33", 2018, "test", "de")
-
-        filmList.add(f1)
-        filmList.add(f2)
-        filmList.add(f3)
-*/
-
         tumFilmler()
     }
 
@@ -50,7 +38,7 @@ class FilmlerActivity : AppCompatActivity() {
 
         val request = Request.Builder()
             .url("https://imdb-top-100-movies.p.rapidapi.com/")
-            .addHeader("X-RapidAPI-Key", "3685b9a11amsh5acc32d66b6a7c0p1910fbjsnd55e43062df9")
+            .addHeader("X-RapidAPI-Key", "dd6fc297e9mshea6a76f8f71eef0p15dd98jsnc1063b79c170")
             .addHeader("X-RapidAPI-Host", "imdb-top-100-movies.p.rapidapi.com")
             .build()
 
@@ -69,25 +57,13 @@ class FilmlerActivity : AppCompatActivity() {
                         println("$name: $value")
                     }
 
-
-                    // response body parse
-
-
-                    println("gelen body")
-                    //println("${response.body!!.string()::class.simpleName}")    // "Int"
-
                     val resStr = response.body!!.string()
-                    println("gelen body2222 ${resStr}")
 
                     val gson = Gson()
                     val itemType = object : TypeToken<List<Filmler>>() {}.type
                     var itemList = gson.fromJson<List<Filmler>>(resStr, itemType)
 
-                    println("gelen 111111 ${itemList}")
-
                     filmList = itemList as ArrayList<Filmler>
-
-
 
                     runOnUiThread {
                         adapter = FilmlerAdapter(filmlerRv.context, filmList)

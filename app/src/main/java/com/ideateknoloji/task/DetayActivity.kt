@@ -25,7 +25,7 @@ class DetayActivity : AppCompatActivity() {
 
         val request = Request.Builder()
             .url("https://imdb-top-100-movies.p.rapidapi.com/${id}")
-            .addHeader("X-RapidAPI-Key", "3685b9a11amsh5acc32d66b6a7c0p1910fbjsnd55e43062df9")
+            .addHeader("X-RapidAPI-Key", "dd6fc297e9mshea6a76f8f71eef0p15dd98jsnc1063b79c170")
             .addHeader("X-RapidAPI-Host", "imdb-top-100-movies.p.rapidapi.com")
             .build()
 
